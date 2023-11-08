@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Persons</h1>
+<form action="" method="post" autocomplete="off">
+    <div class="col-6">
+        <input type="text" class="form-control" name="tag" id="tag" placeholder="Enter keyword"/>
+    </div>
+    <div class="col-6" align="left">
+        <input type="submit" value="Search" class="form-control btn btn-primary" name="">
+    </div>
+</form>
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Birthday</td>
+        <td>Phone</td>
+        <td>Email</td>
+    </tr>
+    {% for person in persons.items %}
+    <tr>
+        <td>{{person.name}}</td>
+        <td>{{person.birthday}}</td>
+        <td>{{person.phone_num}}</td>
+        <td>{{person.email}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% if persons.has_next %}
+<a href="{{ url_for('index', page=persons.next_num) }}">Load More</a>
+{% endif %}
+
+
+<style>
+table {
+    width: 100%;
+}
+
+#example_filter {
+    float: right;
+}
+
+#example_paginate {
+    float: right;
+}
+
+label {
+    display: inline-flex;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+</style>
+</body>
+</html>

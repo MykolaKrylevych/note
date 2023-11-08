@@ -1,0 +1,22 @@
+.fa-regular.fa-pen-to-square {
+    font-size: 16px; /* Розмір іконки */
+}
+.editable {
+    display: none;
+}
+.edit-mode .editable {
+    display: inline;
+}
+.edit-mode .non-editable {
+    display: none;
+}
+.save-btn{
+text-decoration:none;
+color: white;
+}
+
+.save-btn:hover{
+text-decoration:none;
+color: white;
+}
+

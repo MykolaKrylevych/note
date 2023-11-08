@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/note_style.css">
+    <script src="https://kit.fontawesome.com/c2b1a91e80.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+    <ul class="user-ul">
+        <li class="user-li">
+            <img src="{{url_for('static', filename='/assets/logo.png')}}" class="logo-img" alt="">
+        </li>
+        <li class="display-picture user-li" ><img src="{{current_user.email | gravatar }}"
+                                                     alt="{{current_user.username}}"></li>
+    </ul>
+    <div class="card-user-profile hidden">
+        <ul>
+            <li><a href="{{url_for('profile')}}" class="nav-bar-link profile"><i class="fa-regular fa-user"></i> Profile</a></li>
+            <li><a href="{{url_for('logout')}}" class="nav-bar-link logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="text-center mt-5">
+
+
+        <h1 class="mb-4 text-center">Notes</h1>
+
+        <form action="{{ url_for('create') }}" method="post" class="row justify-content-center form-floating"
+              id="noteForm">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="notes_header" class="form-control mb-3" placeholder="Enter a notes header"
+                           required>
+                    <textarea name="note" class="form-control mb-3" placeholder="Enter a note"
+                              oninput="expandTextarea(this)" required></textarea>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle btn" type="button" onclick="toggleDropdown()"
+                                id="selectedItemButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">Choose border
+                        </button>
+                        <ul class="dropdown-menu" id="dropdownMenu" role="menu" aria-labelledby="dropdownMenu">
+                            <li class="card border-primary text-primary" onclick="selectItem('card border-primary')">
+                                Primary
+                            </li>
+                            <li class="card border-secondary text-secondary"
+                                onclick="selectItem('card border-secondary ')">Secondary
+                            </li>
+                            <li class="card border-success text-success" onclick="selectItem('card border-success ')">
+                                Success
+                            </li>
+                            <li class="card border-danger text-danger" onclick="selectItem('card border-danger ')">
+                                Danger
+                            </li>
+                            <li class="card border-warning text-warning" onclick="selectItem('card border-warning ')">
+                                Warning
+                            </li>
+                            <li class="card border-info text-info" onclick="selectItem('card border-info ')">Info</li>
+                            <li class="card border-dark text-dark" onclick="selectItem('card border-dark ')">Dark</li>
+                            <li class="card border-light" onclick="selectItem('card border-light')">Light</li>
+                        </ul>
+                        <input type="hidden" name="selected_item" id="selectedItem" value=" ">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add Note</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="row mt-4">
+        {% for note in notes %}
+        <div class="col-md-4">
+            <div class="card {{note.border_color}} mb-4 shadow-sm p-3 mb-5 bg-body rounded">
+                <div class="card-body text-center ">
+                    <a href="/delete/{{ note.id }}" class="float-right row"><span class="badge bg-light text-dark"><i
+                            class="fa-solid fa-xmark"></i></span></a>
+                    <h4 class="card-title">{{ note.notes_header }}</h4>
+                    <p class="card-text note-content">{{ note.notes }}</p>
+                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <a type="button" class="btn btn-outline-dark open-button">Open</a>
+                        <a type="button" class="btn btn-outline-info edit-button">Edit</a>
+                    </div>
+
+                </div>
+
+
+                <!--                 Зміст картки у режимі редагування -->
+                <form action="{{url_for('update',index=note.id)}}" method="post"
+                      class="card-body text-center edit-form">
+                    <div class="form-group">
+                        <input type="text" name="notes_header_edit" class="form-control mb-3"
+                               value="{{ note.notes_header }}" required>
+                        <textarea name="note_edit" class="form-control mb-3" oninput="expandTextarea(this)"
+                                  placeholder="Enter a note" required>{{ note.notes }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary save-button">Save</button>
+                </form>
+
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="static/note.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

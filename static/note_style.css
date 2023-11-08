@@ -1,0 +1,173 @@
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    .delete-link {
+        color: red;
+        margin-left: 10px;
+    }
+    .note-content {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .form-control {
+        resize: none;
+        height: auto;
+        transition: height 0.3s;
+    }
+    .form-control.expand {
+        height: 150px;
+    }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+  min-width: 120px;
+}
+.dropdown-menu li.selected {
+  background-color: #f1f1f1;
+}
+
+.dropdown-menu li.selected:hover {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu li {
+  list-style-type: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f1f1f1;
+}
+
+.edit-form{
+display: none;
+}
+
+.logo-img {
+    max-width: 55px;
+    display: block;
+    margin: 0;
+}
+
+.user-img {
+    max-width: 65px;
+    display: block;
+    margin: 20px 20px 0 auto;
+    border-radius: 50%;
+}
+
+.user-ul{
+    margin: 0;
+}
+.user-li{
+    margin-bottom: 0px;
+}
+
+
+
+
+
+
+nav{
+  margin: 20px;
+  position: relative;
+  font-family: Sans-serif;
+}
+ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.display-picture{
+  margin-left: auto;
+}
+.display-picture img{
+  width: 50px;
+  border-radius: 50%;
+  border:2px solid #fff;
+}
+.display-picture img:hover{
+border:2px solid #00171F;
+}
+.card-user-profile{
+  transition: 0.5s ease;
+}
+
+.card-user-profile ul{
+  display: flex;
+  border: none;
+  align-items: flex-start;
+  flex-direction: column;
+  background: #00171F;
+  position: absolute;
+  top: 4rem;
+  right:0rem;
+  border-radius: 10px;
+  padding: 10px 50px 10px 20px;
+}
+.card-user-profile ul li{
+  padding: 5px 0;
+  color: #FFF;
+  font-size: 14px;
+}
+.hidden{
+  display: none;
+}
+.nav-bar-link:hover{
+text-decoration:none;
+}
+.nav-bar-link{
+text-decoration:none;
+color: white;
+}
+.logout:hover{
+color: #f2f2f2;
+}
+
+.profile:hover{
+color: #99FF0A;
+}
