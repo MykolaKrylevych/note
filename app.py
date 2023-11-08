@@ -11,7 +11,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# TODO: must change it on secure version create config.py
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URI")
 app.config['SECRET_KEY'] = os.getenv("FLASK_SECRET_KEY")
 
