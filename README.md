@@ -1,4 +1,6 @@
 # Note App
+## First release
+https://your-note-mw51.onrender.com/
 
 ## Installation 
 > Note requires Python 3.10+
